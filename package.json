@@ -1,0 +1,17 @@
+{
+  "name": "employeetracker",
+  "version": "1.0.0",
+  "description": "employee tracker project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Eric Vondunn",
+  "license": "ISC",
+  "dependencies": {
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.3.3",
+    "mysql": "^2.18.1"
+  }
+}
