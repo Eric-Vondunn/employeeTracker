@@ -16,5 +16,19 @@
     "handlebars": "^4.7.6",
     "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Eric-Vondunn/employeeTracker.git"
+  },
+  "keywords": [
+    "Employee",
+    "Management",
+    "System"
+  ],
+  "bugs": {
+    "url": "https://github.com/Eric-Vondunn/employeeTracker/issues"
+  },
+  "homepage": "https://github.com/Eric-Vondunn/employeeTracker#readme"
 }
