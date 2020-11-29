@@ -108,6 +108,30 @@ switch (choice) {
     return quit();
 }
 
+// when promise below resolves it will give us our data
+async function viewEmployees() {
+  const employees = await db.findAllEmployees();
+
+  console.log("\n");
+  console.table(employees);
+
+  loadMainPrompts();
+}
+
+async function viewEmployeesByDepartment() {
+  const departments = await db.findAllDepartments();
+
+  const departmentChoices = departments.map(({ id, name }) => ({
+    name: name,
+    value: id,
+  }));
+
+  console.log("\n");
+  console.table(employees);
+
+  loadMainPrompts();
+}
+
 // main menu
 
 // ask questions
