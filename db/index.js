@@ -63,11 +63,16 @@ class DB {
     return this.connection.query("INSERT INTO role SET ?", role);
   }
 
+  //remove role
+  removeRole(roleId) {
+    return this.connection.query("DELETE FROM role WHERE id = ?", roleId);
+  }
+
   //find all departments
 
   findAllDepartments() {
     return this.connection.query(
-      "SELECT department.id, department.name, SUM(role.salary AS utilized_b"
+      "SELECT department.id, department.name, SUM(role.salary AS utilized_budget FROM employee left"
     );
   }
 
@@ -85,7 +90,7 @@ class DB {
   //find all employees by department
   findAllEmployeesByDepartment(departmentId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title",
+      "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN",
       departmentId
     );
   }
@@ -93,10 +98,11 @@ class DB {
   //not done
   findAllEmployeesByManager(managerId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, department.name",
+      "SELECT employee.id, employee.first_name, employee.last_name, department.name AS department,",
       managerId
     );
   }
 }
 
+//connection object?
 module.exports = new DB(connection);
