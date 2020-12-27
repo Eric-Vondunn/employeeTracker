@@ -1,6 +1,10 @@
+// this file gets your command line to work
+
 // require inquirer and mysql
 const { prompt } = require("inquirer");
 const logo = require("asciiart-logo");
+
+//imports db folder
 const db = require("./db");
 require("console.table");
 // make a connection
@@ -8,6 +12,7 @@ require("console.table");
 // init
 init();
 
+//display logo
 let init = () => {
   const logoText = logo({ name: "Employee Manager" }).render();
 
@@ -122,6 +127,21 @@ async function viewEmployeesByDepartment() {
   const departments = await db.findAllDepartments();
 
   const departmentChoices = departments.map(({ id, name }) => ({
+    name: name,
+    value: id,
+  }));
+
+  console.log("\n");
+  console.table(employees);
+
+  loadMainPrompts();
+}
+
+//finish
+async function viewEmployeesByManager() {
+  const managers = await db.findAllPossibleManagers(employeeID);
+
+  const managerChoices = managers.map(({ id, name }) => ({
     name: name,
     value: id,
   }));
