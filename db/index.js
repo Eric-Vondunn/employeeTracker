@@ -1,3 +1,5 @@
+//helper functions to enter data into database
+//connects to connection file
 const connection = require("./connection");
 
 class DB {

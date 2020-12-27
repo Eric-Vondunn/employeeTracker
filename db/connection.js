@@ -1,6 +1,9 @@
+//connects to database
+//es5 syntax (require)
 const util = require("util");
 const mysql = require("mysql");
 
+//call createconnection method
 const connection = mysql.createConnection({
   host: "localhost",
   user: "root",
