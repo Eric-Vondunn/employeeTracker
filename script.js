@@ -67,9 +67,9 @@ function start() {
 
 //
 async function viewAllEmployees() {
-  const employees = await db.findAllEmployees();
+  const employee = await db.findAllEmployees();
   console.table("\n");
-  console.table(employees);
+  console.table(employee);
   start();
 }
 
@@ -279,7 +279,7 @@ async function updateRole() {
       }
     }
 
-    await db.updateEmployee(empId, newRoleId, newManagerId);
+    await db.updateEmployeeRole(empId, newRoleId, newManagerId);
     console.table(
       `\n* * * * * * ${answers.emp}'s role has been changed to ${answers.role}. * * * * * *\n`
     );

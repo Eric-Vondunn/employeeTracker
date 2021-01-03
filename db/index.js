@@ -15,9 +15,7 @@ class DB {
   //method that belongs db
   //to execute call db.findAllEmployees
   findAllEmployees() {
-    return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title, department.name AS department, role.salary, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department on role.department_id = department.id LEFT JOIN employee manager on manager.id = employee.manager_id;"
-    );
+    return this.connection.query("SELECT * FROM employee");
   }
 
   //method that belongs to db
@@ -29,9 +27,15 @@ class DB {
   }
   //method that belongs to db
   //create employee
-  createEmployee(employee) {
-    return this.connection.query("INSERT INTO employee SET ?", employee);
+  createEmployee(answers, newRoleID, newManagerId) {
+    return this.connection.query("INSERT INTO employee SET ?", {
+      first_name: answers.first_name,
+      last_name: answers.last_name,
+      role_id: newRoleID,
+      manager_id: newManagerId,
+    });
   }
+
   //method that belongs to db
   //remove employee by id
   removeEmployee(employeeID) {
@@ -42,11 +46,10 @@ class DB {
   }
   //method that belongs to db
   //update specific employee role
-  updateEmployeeRole(employeeID, roleId) {
-    return this.connection.query(
-      "UPDATE employee SET role_id = ? WHERE id = ?",
-      [roleID, employeeId]
-    );
+  updateEmployeeRole(employeeID, newRoleId) {
+    return this.connection.query("UPDATE employee SET ? WHERE ?", [
+      { role_id: newRoleID, employee_Id: empId },
+    ]);
   }
 
   //method that belongs to db
@@ -61,15 +64,17 @@ class DB {
 
   //find all roles
   findAllRoles() {
-    return this.connection.query(
-      "SELECT role.id, role.title, department.name AS department, role.salary"
-    );
+    return this.connection.query("SELECT * FROM role");
   }
 
   //create new role
   //method that belongs to db
-  createRoll(role) {
-    return this.connection.query("INSERT INTO role SET ?", role);
+  createRoll(answers, newDeptId) {
+    return this.connection.query("INSERT INTO role SET ?", {
+      title: answers.title,
+      salary: answers.salary,
+      department_id: newDeptId,
+    });
   }
 
   //method that belongs to db
@@ -89,7 +94,11 @@ class DB {
 
   //method that belongs to db
   //create a new department
-  createDepartment(department) {}
+  createDepartment(answers) {
+    return this.connection.query("INSERT INTO department SET ?", {
+      department: answers.dept,
+    });
+  }
 
   //method that belongs to db
   removeDepartment(departmentId) {

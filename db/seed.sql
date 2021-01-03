@@ -1,7 +1,7 @@
 
 -- Inserts a set of records into the "department" table
 INSERT INTO department
-  (name)
+  (department)
 VALUE
 ("Sales"),
 ("Engineering"),
