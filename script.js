@@ -67,7 +67,7 @@ function start() {
 
 //
 async function viewAllEmployees() {
-  const employees = await db.findAllEmployeeInfo();
+  const employees = await db.findAllEmployees();
   console.table("\n");
   console.table(employees);
   start();
