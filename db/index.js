@@ -87,9 +87,7 @@ class DB {
   //find all departments
 
   findAllDepartments() {
-    return this.connection.query(
-      "SELECT department.id, department.name, SUM(role.salary AS utilized_budget FROM employee left"
-    );
+    return this.connection.query("SELECT * FROM department");
   }
 
   //method that belongs to db
