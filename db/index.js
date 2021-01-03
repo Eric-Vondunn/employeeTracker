@@ -69,7 +69,7 @@ class DB {
 
   //create new role
   //method that belongs to db
-  createRoll(answers, newDeptId) {
+  createRole(answers, newDeptId) {
     return this.connection.query("INSERT INTO role SET ?", {
       title: answers.title,
       salary: answers.salary,
