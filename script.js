@@ -179,7 +179,7 @@ async function addRole() {
       }
     }
 
-    await db.createRole(answers, newDeptId);
+    await db.createRole(answers);
     console.table(
       `\n* * * * * * ${answers.title} has been added. * * * * *  \n`
     );
