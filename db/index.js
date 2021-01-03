@@ -47,8 +47,9 @@ class DB {
   //method that belongs to db
   //update specific employee role
   updateEmployeeRole(employeeID, newRoleId) {
+    console.log(newRoleId);
     return this.connection.query("UPDATE employee SET ? WHERE ?", [
-      { role_id: newRoleID, employee_Id: empId },
+      { role_id: newRoleId, employee_Id: empId },
     ]);
   }
 

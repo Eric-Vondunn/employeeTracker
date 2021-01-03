@@ -267,6 +267,7 @@ async function updateRole() {
     }
     for (var i = 0; i < roles.length; i++) {
       if (roles[i].title === answers.role) {
+        console.log("Match Found:", roles[i].title);
         newRoleId = roles[i].role_id;
       }
     }
@@ -278,7 +279,7 @@ async function updateRole() {
         newManagerId = managers[i].employee_id;
       }
     }
-
+    console.log(newRoleId);
     await db.updateEmployeeRole(empId, newRoleId, newManagerId);
     console.table(
       `\n* * * * * * ${answers.emp}'s role has been changed to ${answers.role}. * * * * * *\n`
